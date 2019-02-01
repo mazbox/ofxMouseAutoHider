@@ -18,7 +18,7 @@
 
 class ofxMouseAutoHider {
 public:
-	static void enable(float idleDurationBeforeHiding = 3);
+	static void enable(float idleDurationBeforeHiding = 3, bool keyboardActivityShowsMouse = true);
 	static void disable();
 	static bool mouseIsShowing();
 private:
@@ -26,12 +26,14 @@ private:
 	float timeout;
 	static ofxMouseAutoHider *instance;
 	void mouseEvent(ofMouseEventArgs &m);
+	void keyEvent(ofKeyEventArgs &k);
 	void update(ofEventArgs &evt);
 	float lastTimeMouseMoved;
 	bool cursorShowing;
 	bool enabled;
 	void setEnabled(bool enabled);
 	static ofxMouseAutoHider *getInstance();
+    bool keyboardActivityShowsMouse;
 };
 
 
